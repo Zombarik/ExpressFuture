@@ -1,0 +1,145 @@
+﻿<Page x:Class="FutureExpress.Pages.AddOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:FutureExpress.Pages"
+      xmlns:xctk ="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+       Title="Оформлення замовлення"  Style="{StaticResource base_page}" 
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition  Height="Auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid  Grid.ColumnSpan="2" />
+        <Image  
+               Margin="10" 
+               HorizontalAlignment="Left" />
+
+        <TextBlock  Text="Замовлення №"  Grid.Row="1" Grid.Column="0" 
+                    Grid.ColumnSpan="2"  x:Name="TextBlockOrderNumber"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="20"
+                   FontWeight="Bold" />
+
+        <TextBlock Text="Дата замовлення"  Grid.Row="2" Grid.Column="0" 
+                   HorizontalAlignment="Left" Margin="10 0 0 0" 
+                   VerticalAlignment="Center"
+                  Style="{StaticResource item_textblock}"
+                   FontWeight="Bold" />
+        <xctk:DateTimePicker x:Name="DateTimeOrderCreateDate" Grid.Row="2" Grid.Column="1" Value="{Binding OrderCreateDate}"/>
+        <TextBlock Text="Дата отримання"  Grid.Row="7" Grid.Column="0" 
+                   HorizontalAlignment="Left" Margin="10 0 0 0" 
+                   VerticalAlignment="Center"
+                   Style="{StaticResource item_textblock}"
+                   FontWeight="Bold" />
+        <!--<TextBlock x:Name="TextBlockOrderDeliveryDate" Grid.Row="7"
+                   Grid.Column="1"  VerticalAlignment="Center"
+                   HorizontalAlignment="Left" 
+                   Style="{StaticResource item_textblock}"
+                   FontWeight="Bold"  />-->
+        <xctk:DateTimePicker x:Name="DateTimeOrderDeliveryDate"
+                             Grid.Row="7" Grid.Column="1" 
+                             Value="{Binding OrderDeliveryDate}"/>
+        <TextBlock Text="Тип послуги"  Grid.Row="3" Grid.Column="0" 
+                   HorizontalAlignment="Left" Margin="10 0 0 0" 
+                   VerticalAlignment="Center"
+                   Style="{StaticResource item_textblock}"
+                   FontWeight="Bold" />
+        <ComboBox x:Name="ComboService" 
+                  SelectedItem="{Binding Rate.Service}" 
+                  Grid.Row="3" Grid.Column="1" 
+                  DisplayMemberPath="Name" 
+                  SelectedValuePath="ServiceId" SelectionChanged="ComboService_SelectionChanged" />
+
+        <TextBlock Text="Відстань"  Grid.Row="4" Grid.Column="0" 
+                   HorizontalAlignment="Left" Margin="10 0 0 0" 
+                   VerticalAlignment="Center"
+                   Style="{StaticResource item_textblock}"
+                   FontWeight="Bold" />
+        <ComboBox x:Name="ComboZone" 
+                  SelectedItem="{Binding Rate.Zone}" 
+                  Grid.Row="4" Grid.Column="1" 
+                  DisplayMemberPath="Name" 
+                  SelectedValuePath="ZoneId" SelectionChanged="ComboZone_SelectionChanged" />
+        <TextBlock Text="Вага"  Grid.Row="5" Grid.Column="0" 
+                   HorizontalAlignment="Left" Margin="10 0 0 0" 
+                   VerticalAlignment="Center"
+                   Style="{StaticResource item_textblock}"
+                   FontWeight="Bold" />
+        <TextBlock Text="Вага"  Grid.Row="5" Grid.Column="0" 
+                   HorizontalAlignment="Left" Margin="10 0 0 0" 
+                   VerticalAlignment="Center"
+                   Style="{StaticResource item_textblock}"
+                   FontWeight="Bold" />
+        <xctk:DoubleUpDown x:Name="UpDownWeight"  Value="{Binding Weight}" Grid.Row="5" Grid.Column="1" Increment="0.5" ValueChanged="UpDownWeight_ValueChanged" Minimum="0" />
+        <DataGrid x:Name="DataGridRate" Grid.Row="6" Grid.ColumnSpan ="2"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  LoadingRow="DataGridGoodLoadingRow">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Service.Name}" Header="Послуга" />
+                <DataGridTextColumn Binding="{Binding Zone.Name}" Header="Відстань" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Weight, StringFormat='f'}" Header="Вага" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Price, StringFormat='c', ConverterCulture='ua-UA'}"
+                                    Header="Вартість" Width="*"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <TextBlock Text="Пункт выдачі"  Grid.Row="9" Grid.Column="0" 
+                   HorizontalAlignment="Left" Margin="10 0 0 0" 
+                   VerticalAlignment="Center"
+                   Style="{StaticResource item_textblock}"
+                   FontWeight="Bold" />
+        <ComboBox x:Name="ComboPickupPoint" 
+                  SelectedItem="{Binding ProductCategory}" 
+                  Grid.Row="9" Grid.Column="1" 
+                  DisplayMemberPath="Address" 
+                  SelectedValuePath="PickupPointId" />
+        <TextBlock Text="Код отримання"  Grid.Row="8" Grid.Column="0" 
+                   HorizontalAlignment="Left" Margin="10 0 0 0" 
+                   VerticalAlignment="Center"
+                   Style="{StaticResource item_textblock}"
+                   FontWeight="Bold" />
+        <TextBlock x:Name="TextBlockOrderGetCode"
+                   Grid.Row="8" Grid.Column="1" 
+                   VerticalAlignment="Center" 
+                   HorizontalAlignment="Left" 
+                   Style="{StaticResource item_textblock}"
+                   FontWeight="Bold"  />
+
+        <TextBlock x:Name="TextBlockTotalCost" Grid.Row="10" Grid.ColumnSpan="2"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="11"
+                    Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button Width="100" Height="30" 
+                    Content="Відміна" 
+                    x:Name="BtnOk" Click="BtnOk_Click" 
+                    />
+
+            <Button x:Name="BtnBuyItem"  Content="Оформити" 
+                    Width="120" Click="BtnBuyItem_Click"  />
+        </StackPanel>
+    </Grid>
+</Page>

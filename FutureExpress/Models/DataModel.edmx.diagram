@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0e02de6b5c2446cbb9c58bfcbd67a02f" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="PonyExpressDBModel.Client" Width="1.5" PointX="7" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PonyExpressDBModel.Order" Width="1.5" PointX="5.375" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PonyExpressDBModel.OrderStatu" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PonyExpressDBModel.PickupPoint" Width="1.5" PointX="7.375" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PonyExpressDBModel.Rate" Width="1.5" PointX="3.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PonyExpressDBModel.Role" Width="1.5" PointX="3.125" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PonyExpressDBModel.Service" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PonyExpressDBModel.sysdiagram" Width="1.5" PointX="18.375" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PonyExpressDBModel.User" Width="1.5" PointX="5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PonyExpressDBModel.Zone" Width="1.5" PointX="3.125" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="PonyExpressDBModel.FK_Client_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PonyExpressDBModel.FK_Order_OrderStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="PonyExpressDBModel.FK_Order_PickupPoint" ManuallyRouted="false" />
+        <AssociationConnector Association="PonyExpressDBModel.FK_Order_Rate" ManuallyRouted="false" />
+        <AssociationConnector Association="PonyExpressDBModel.FK_Order_User" ManuallyRouted="false" />
+        <AssociationConnector Association="PonyExpressDBModel.FK_Rate_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="PonyExpressDBModel.FK_Rate_Zone" ManuallyRouted="false" />
+        <AssociationConnector Association="PonyExpressDBModel.FK_User_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
